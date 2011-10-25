@@ -1,0 +1,42 @@
+
+
+colorscheme simple
+
+set complete=blf
+set go=Cs
+
+set newtab=addons,help,downloads
+
+
+"hide tabline
+map <A-Tab>n :set showtabline=never<CR>
+map <A-Tab> :set showtabline=always<CR>
+map <A-n> gt
+map <A-b> gT
+
+" lb/fb goes to last/first tab
+noremap ]b g$
+noremap [b g^
+
+
+" some plugin settings {{{
+
+loadplugins '\.(js|penta)$'
+set tabclose=previous,opener,left,right
+set tabopen=link:right,orphan:end,external:end
+
+set noscript-list=address
+"noscript short-cuts
+"noscript-sites
+map <A-s> :set nss!=<A-Tab>
+"noscript-tempsites
+map <s> :set nst!=<A-Tab>
+"noscript-object
+map <A-c> :set nso!=<A-Tab>
+"noscript-untrusted
+map <A-C-s> :set nsu!=<A-Tab>
+
+" }}}
+group user
+
+" vim:filetype=vim:foldmethod=marker
