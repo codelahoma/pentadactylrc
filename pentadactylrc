@@ -7,6 +7,8 @@ set go=Cs
 
 set newtab=addons,help,downloads
 
+" stop autocompletion on any type of open command
+set autocomplete=!/ex/(.*open),.?
 
 "hide tabline
 map <A-Tab>n :set showtabline=never<CR>
