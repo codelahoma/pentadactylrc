@@ -5,7 +5,7 @@ colorscheme simple
 set complete=blf
 set go=Cs
 
-set newtab=addons,help,downloads
+set newtab=all
 
 " stop autocompletion on any type of open command
 set autocomplete=!/ex/(.*open),.?
@@ -15,6 +15,15 @@ map <A-Tab>n :set showtabline=never<CR>
 map <A-Tab> :set showtabline=always<CR>
 map <A-n> gt
 map <A-b> gT
+" left hand tabbing with dvorak
+" go to next tab with <S-.>
+noremap \> gt    
+" go to next tab with <S-,>
+noremap \< gT 
+" shortcut to firefox dialogs
+noremap D :dialog<space>
+" show download dialog
+map <A-d> :dialog downloads<CR>
 
 " lb/fb goes to last/first tab
 noremap ]b g$
