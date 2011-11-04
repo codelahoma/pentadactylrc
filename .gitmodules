@@ -1,0 +1,3 @@
+[submodule "colors/.zenburn"]
+	path = colors/.zenburn
+	url = http://github.com/covin/zenburn.penta

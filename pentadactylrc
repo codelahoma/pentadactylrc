@@ -1,6 +1,6 @@
 
 
-colorscheme simple
+colorscheme zenburn
 
 set complete=blf
 set go=Cs
