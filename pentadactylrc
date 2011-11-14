@@ -17,9 +17,11 @@ map <A-n> gt
 map <A-b> gT
 " left hand tabbing with dvorak
 " go to next tab with <S-.>
-noremap \> gt    
+noremap \> <C-n>
 " go to next tab with <S-,>
-noremap \< gT 
+noremap <lt> <C-p>
+" toggeling between previous buffer
+noremap \" <C-6>
 " shortcut to firefox dialogs
 noremap D :dialog<space>
 " show download dialog
