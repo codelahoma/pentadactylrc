@@ -2,54 +2,84 @@
 
 colorscheme zenburn
 
-set complete=blf
-set go=Cs
+set defsearch=g.de
+
+set complete=sbl
+set guioptions=Cs
 
 set newtab=all
+
+set mapleader=,
+map <\> <Leader>
 
 " stop autocompletion on any type of open command
 set autocomplete=!/ex/(.*open),.?
 
 "hide tabline
-map <A-Tab>n :set showtabline=never<CR>
-map <A-Tab> :set showtabline=always<CR>
-map <A-n> gt
-map <A-b> gT
-" left hand tabbing with dvorak
-" go to next tab with <S-.>
-noremap \> <C-n>
-" go to next tab with <S-,>
-noremap <lt> <C-p>
-" toggeling between previous buffer
-noremap \" <C-6>
-" shortcut to firefox dialogs
-noremap D :dialog<space>
-" show download dialog
-map <A-d> :dialog downloads<CR>
-
-" lb/fb goes to last/first tab
-noremap ]b g$
-noremap [b g^
+map <Leader><n><t> :set showtabline=never<CR>
+map <Leader><t>    :set showtabline=always<CR>
 
 
-" some plugin settings {{{
+" tabbing {{{
+    map <A-n> gt
+    map <A-b> gT
 
-loadplugins '\.(js|penta)$'
-set tabclose=previous,opener,left,right
-set tabopen=link:right,orphan:end,external:end
+    " left hand tabbing with dvorak
+    " go to next tab with <S-.>
+    noremap \> <C-n>
+    " go to next tab with <S-,>
+    noremap <lt> <C-p>
+    " toggeling between previous buffer
+    noremap \" <C-6>
+    " lb/fb goes to last/first tab
+    noremap ]b g$
+    noremap [b g^
+" }}}"
 
-set noscript-list=address
-"noscript short-cuts
-"noscript-sites
-map <A-s> :set nss!=<A-Tab>
-"noscript-tempsites
-map <s> :set nst!=<A-Tab>
-"noscript-object
-map <A-c> :set nso!=<A-Tab>
-"noscript-untrusted
-map <A-C-s> :set nsu!=<A-Tab>
-
+" quich access to firefox dialogs {{{
+    " shortcut to firefox dialogs
+    map <Leader>d :dialog<space>
+    " show download dialog
+    noremap <A-d> :dialog downloads<CR>
 " }}}
+
+
+" cookie management {{{
+    set cookieaccept=samesite
+    set cookielifetime=session
+    map <Leader>c   :cookies<Space>
+    map <A-c>       :cookies<Space><A-Tab>
+    noremap <Leader>cr  :sanitize cookies
+" }}}
+
+
+" plugin settings {{{
+    loadplugins '\.(js|penta)$'
+    set tabclose=previous,opener,left,right
+    set tabopen=link:right,orphan:right,external:end
+
+    " ----- no-script integration ----- "
+    :command ns-revoke -nargs=0
+                \ :set nst=
+                \ :echo "[no-script] temporary permissions has been revoked"
+
+    set noscript-list=address
+    "noscript short-cuts
+    "noscript-sites
+    noremap <Leader>ss  :set nss!=
+    "noscript-tempsites
+    noremap <A-s>       :set nst!=<A-Tab>
+    noremap <Leader>st  :set nst!=
+    " list tempsites
+    noremap <Leader>sl  :set nst<CR>
+    " remove tempsites
+    noremap <Leader>sr  :ns-revoke<CR>
+    "noscript-object
+    noremap <Leader>so  :set nso!=<A-Tab>
+    "noscript-untrusted
+    noremap <Leader>su  :set nsu!=<A-Tab>
+" }}}
+
 group user
 
 " vim:filetype=vim:foldmethod=marker
